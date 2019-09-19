@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>New Meeting</h2>
+  <%= form_with model: @meeting do |form| %>
+    <%= form.fields_for :timebox, @meeting.timebox do |timebox_fields| %>
+      <div class="form-group">
+        <%= label_tag(:voting_duration, "voting:") %>
+        <%= timebox_fields.text_field :voting_duration, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:collection_duration, "collection:") %>
+        <%= timebox_fields.text_field :collection_duration, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:ordering_duration, "ordering:") %>
+        <%= timebox_fields.text_field :ordering_duration, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:topic_discussion_duration, "topic discussion:") %>
+        <%= timebox_fields.text_field :topic_discussion_duration, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:topic_extension_duration, "topic extension:") %>
+        <%= timebox_fields.text_field :topic_extension_duration, class: "form-control" %>
+      </div>
+    <% end %>
+
+    <%= submit_tag nil, class: 'btn btn-primary' %>
+  <% end%>
+</div>

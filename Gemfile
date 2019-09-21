@@ -62,8 +62,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap', '~> 4.3.1'
-gem 'hecks-adapters-dynamodb'
-gem 'hecks-app'
+gem 'hecks-adapters-dynamodb', '0.1.0'
+gem 'hecks-active_model'
 gem 'hecks-domain', '0.1.0'
 gem 'lean_coffee'
 gem 'jquery-rails'

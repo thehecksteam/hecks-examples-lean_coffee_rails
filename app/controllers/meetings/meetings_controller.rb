@@ -1,13 +1,5 @@
-class LeanCoffee::Domain::Meetings::Meeting
-  def self.model_name
-    ActiveModel::Name.new(self, nil, 'Meeting')
-  end
-end
-
-class MeetingsController < ApplicationController
+class Meetings::MeetingsController < ApplicationController
   def new
-    LeanCoffee::Domain::Meetings::Meeting.include ActiveModel::Model
-
     @meeting = Domain[:Meetings].default(
       participants: [],
       timebox: Domain[Meetings: :Timebox].zeroed
@@ -15,14 +7,14 @@ class MeetingsController < ApplicationController
   end
 
   def create
-    foo = params.permit(meeting: {})[:meeting].to_h
+    foo = params.permit(meetings_meeting: {})[:meetings_meeting].to_h
     meeting = Domain[:Meetings].default(
       participants: [],
       timebox: foo[:timebox].symbolize_keys
     )
 
     Domain[meeting].save
-    redirect_to meeting_path(meeting.id)
+    redirect_to meetings_meeting_path(meeting.id)
   end
 
   def show

@@ -1,4 +1,9 @@
 <div class="container">
-  <h2>Meeting</h2>
-  <%= @meeting.inspect %>
+  <h2><%= @domain_object.class %></h2>
+  
+  <pre>
+    <div style='white-space: pre-wrap;'>
+<%= JSON.pretty_generate @domain_object.as_json %>
+    </div>
+  </pre>
 </div>

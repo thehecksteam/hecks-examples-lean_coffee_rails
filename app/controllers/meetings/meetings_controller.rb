@@ -19,6 +19,6 @@ class Meetings::MeetingsController < ApplicationController
 
   def show
     foo = params.permit(:id)
-    @meeting = Domain[:Meetings].fetch(foo[:id])
+    @domain_object = Domain[:Meetings].fetch(foo[:id])
   end
 end

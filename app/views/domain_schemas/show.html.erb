@@ -1,8 +1,7 @@
 <div class="container">
-  <h1><%= @schema.name %> Domain YAML</h1>
-  <pre>
-    <div>
-<%= @schema.to_yaml %>
-    </div>
-  </pre>
+  <h1><%= @schema.name %> Details</h1>
+  <h2>Adapters</h2>
+    <div><pre><%= Domain.instance.adapters.map(&:class) %></pre></div>
+  <h2>Schema</h2>
+  <div><pre><%= @schema.to_yaml %></pre></div>
 </div>

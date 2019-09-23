@@ -1,6 +1,6 @@
 class Meetings::MeetingsController < ApplicationController
   def new
-    @meeting = Domain[:Meetings].default(
+    @meeting = Domain[:Meetings].build(
       participants: [],
       timebox: Domain[Meetings: :Timebox].zeroed
     )
@@ -8,7 +8,7 @@ class Meetings::MeetingsController < ApplicationController
 
   def create
     foo = params.permit(meetings_meeting: {})[:meetings_meeting].to_h
-    meeting = Domain[:Meetings].default(
+    meeting = Domain[:Meetings].build(
       participants: [],
       timebox: foo[:timebox].symbolize_keys
     )

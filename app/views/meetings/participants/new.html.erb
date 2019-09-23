@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>New Participant</h2>
+  
+  <%= form_with model: @meeting do |form| %>
+    <%= form.hidden_field :id, class: "form-control" %> 
+    <%= form.fields_for :participant, @meeting.participants.first do |participant_fields| %>
+
+      <div class="form-group">
+        <%= label_tag(:user, "user id:") %>
+        <%= participant_fields.text_field :user, class: "form-control" %>
+      </div>
+      <%= submit_tag nil, class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
+</div>

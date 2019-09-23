@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>New User</h2>
+  <%= form_with model: @user do |form| %>
+    
+      <div class="form-group">
+        <%= label_tag(:name, "name:") %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+      <%= submit_tag nil, class: 'btn btn-primary' %>
+    <% end %>
+
+</div>

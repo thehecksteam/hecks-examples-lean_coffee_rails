@@ -3,16 +3,19 @@
 class Meetings::ParticipantsController < ApplicationController
   def new
     @meeting = Domain[:Meetings].fetch(params[:meeting_id])
+    @participant = Domain[Meetings: :Participant].new(
+      remaining_votes: 5,
+      user: nil
+    )
   end
 
   def create
-    foo = params.permit(meetings_meeting: {})[:meetings_meeting].to_h
-    @meeting = Domain[:Meetings].fetch(params[:id])
-    
-    @meeting.addParticipant()
+    foo = params.permit(meetings_participant: {})[:meetings_participant].to_h
+    @meeting = Domain[:Meetings].fetch(foo[:meeting_id])
+    Domain[@meeting].add_participant_to_meeting!(foo.symbolize_keys)
 
-    Domain[meeting].save
-    redirect_to meetings_meeting_path(meeting.id)
+    Domain[@meeting].save
+    redirect_to meetings_meeting_path(@meeting.id)
   end
 
   def show

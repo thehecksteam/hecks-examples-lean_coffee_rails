@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   namespace :meetings do
-    resources :meetings do
-      resources :participants
-    end
+    resources :participants
+    resources :meetings
   end
 
   namespace :users do

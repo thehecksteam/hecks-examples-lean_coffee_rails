@@ -1,0 +1,2 @@
+module Meetings::TopicsHelper
+end
